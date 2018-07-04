@@ -1,4 +1,4 @@
-@Extends('main')
+@extends('main')
 @section ('title', '| HomePage')
 
 @section ('content')

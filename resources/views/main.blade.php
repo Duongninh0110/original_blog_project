@@ -9,7 +9,7 @@
     
     <div class="container">
       @include('Partials._Messages')
-    
+      
       @yield ('content')    
     
       @include ('Partials._Footer')
