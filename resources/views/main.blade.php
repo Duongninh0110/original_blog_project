@@ -18,5 +18,7 @@
 
     @include ('Partials._Javascript')
 
+    @yield('scripts')
+
   </body>
 </html>

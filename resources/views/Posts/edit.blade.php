@@ -2,6 +2,22 @@
 
 @section('title','|Edit Blog Post')
 
+@section ('stylesheets')
+
+{!!Html::style('css/select2.min.css')!!}
+
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xpzgj5xm3q4349f58qxl4sxzdl3o7nkiy84rj8rqupy1glf7"></script>
+<script>
+	tinymce.init({
+		selector: 'textarea',
+		plugins:'link code',
+		menubar:false,
+		
+	});
+</script>
+
+@endsection 
+
 @section('content')
 	<div class="row">
 		{!! Form::model($post, ['route'=>['posts.update', $post->id], 'method'=>'PUT']) !!}
@@ -14,6 +30,9 @@
 
 			{{Form::label('category_id', 'Category:', ["class"=>'form-spacing-top'])}}
 			{{Form::select('category_id', $categories, null, ['class'=>'form-control'])}}
+
+			{{Form::label('tags', 'Tags:', ["class"=>'form-spacing-top'])}}
+			{{Form::select('tags[]', $tags, null, ['class'=>'form-control select2-multi', 'multiple'=>'multiple' ])}}
 
 			{{Form::label('Body', 'Body:', ["class"=>'form-spacing-top'])}}
 			{{Form::textarea('body',null, ['class'=>'form-control input-lg'])}}
@@ -49,3 +68,14 @@
 
 
 @endsection<!--end of row (form)-->
+
+@section('scripts')
+
+{!!html::script('js/select2.min.js')!!}
+
+<script type ="text/javascript">
+	$('.select2-multi').select2();
+	
+</script>
+
+@endsection
